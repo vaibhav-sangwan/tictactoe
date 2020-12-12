@@ -1,8 +1,3 @@
-## Sugar Hello World Example
+## Tic Tac Toe
 
-This is an example Sugar Desktop Activity, that follows the "Hello World" tradition of being a small and simple demonstration of a complete program for a system. 
-
-## Other Examples
-
-* https://github.com/erilyth/Hello-World-Python_Sugar
-* [Your example here?]
+This is my first attempt at making a Sugar activity. A simple tic tac toe game
