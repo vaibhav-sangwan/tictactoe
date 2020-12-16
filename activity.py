@@ -14,14 +14,11 @@ class TicTacToe(activity.Activity):
 
 
 	def __init__(self, handle):
-		"""Set up the HelloWorld activity."""
 		activity.Activity.__init__(self, handle)
 
-		# we do not have collaboration features
-		# make the share option insensitive
 		self.max_participants = 1
 
-		# toolbar with the new toolbar redesign
+
 		toolbar_box = ToolbarBox()
 
 		activity_button = ActivityToolbarButton(self)
@@ -41,21 +38,13 @@ class TicTacToe(activity.Activity):
 		self.set_toolbar_box(toolbar_box)
 		toolbar_box.show()
 
-		# label with the text, make the string translatable
-
 		vbox = Gtk.VBox(spacing = 20)
 		
-		#grid = Gtk.Grid()
 		self.set_canvas(vbox)
 		vbox.show()
 
 		
-		
-		
-		
-		
-		
-		
+	
 		
 		self.turn = "X"
 		self.turnview = Gtk.Label(label = self.turn+"'s turn")
