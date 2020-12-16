@@ -14,11 +14,12 @@ class TicTacToe(activity.Activity):
 
 
 	def __init__(self, handle):
+		self.track = set()
 		activity.Activity.__init__(self, handle)
 
 		self.max_participants = 1
 
-
+		
 		toolbar_box = ToolbarBox()
 
 		activity_button = ActivityToolbarButton(self)
@@ -38,13 +39,21 @@ class TicTacToe(activity.Activity):
 		self.set_toolbar_box(toolbar_box)
 		toolbar_box.show()
 
+		
+
 		vbox = Gtk.VBox(spacing = 20)
+		
 		
 		self.set_canvas(vbox)
 		vbox.show()
 
 		
-	
+		
+		
+		
+		
+		
+		
 		
 		self.turn = "X"
 		self.turnview = Gtk.Label(label = self.turn+"'s turn")
@@ -115,6 +124,9 @@ class TicTacToe(activity.Activity):
 
 
 	def click(self, widget, *uu):
+		if widget in self.track:
+			return 0
+		self.track.add(widget)
 		print("trigger")
 		_ = int(uu[0])
 		__ = int(uu[1])
@@ -211,6 +223,7 @@ class TicTacToe(activity.Activity):
 		self.turnview.set_markup("<span font='25'>"+self.turn+" wins!!! "+self.turn+"'s turn</span>")
 		self.storex = {"dl":0,"dr":0,"v1":0,"v2":0,"v3":0, "h1":0,"h2":0, "h3":0}
 		self.storeo = {"dl":0,"dr":0,"v1":0,"v2":0,"v3":0, "h1":0,"h2":0, "h3":0}
+		self.track = set()
 	
 	def incscore(self, ch):
 		if ch.upper() == "X":
