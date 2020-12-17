@@ -90,13 +90,13 @@ class TicTacToe(activity.Activity):
         self.turnview.set_markup("<span font='25'>"+self.turn+"'s turn</span>")
 
         vbox.pack_start(self.turnview, True, True, 0)
-        l = b = 1
         grid = Gtk.Grid()
         grid.show()
         vbox.pack_start(grid, True, True, 0)
         credits = Gtk.Label(label="")  # , xalign=1)
         credits.set_markup(
-            "<span font='10'> Made with ❤ by <a href='https://www.github.com/devmrfitz'> Aditya </a></span>")
+            """<span font='10'> Made with ❤ by <a href='https://www.github.com/devmrfitz'>
+Aditya </a></span>""")
         credits.show()
         vbox.pack_start(credits, 1, 1, 0)
         credits.show()
@@ -106,24 +106,24 @@ class TicTacToe(activity.Activity):
                 self.list[_].append(Gtk.Button())
                 self.list[_][__].connect("clicked", self.click, _, __)
 
-        grid.attach(self.list[0][0], 0, 0, l, b)
+        grid.attach(self.list[0][0], 0, 0, 1, 1)
 
         grid.attach_next_to(
-            self.list[0][1], self.list[0][0], Gtk.PositionType.RIGHT, l, b)
+            self.list[0][1], self.list[0][0], Gtk.PositionType.RIGHT, 1, 1)
         grid.attach_next_to(
-            self.list[0][2], self.list[0][1], Gtk.PositionType.RIGHT, l, b)
+            self.list[0][2], self.list[0][1], Gtk.PositionType.RIGHT, 1, 1)
         grid.attach_next_to(
-            self.list[1][0], self.list[0][0], Gtk.PositionType.BOTTOM, l, b)
+            self.list[1][0], self.list[0][0], Gtk.PositionType.BOTTOM, 1, 1)
         grid.attach_next_to(
-            self.list[1][1], self.list[1][0], Gtk.PositionType.RIGHT, l, b)
+            self.list[1][1], self.list[1][0], Gtk.PositionType.RIGHT, 1, 1)
         grid.attach_next_to(
-            self.list[1][2], self.list[1][1], Gtk.PositionType.RIGHT, l, b)
+            self.list[1][2], self.list[1][1], Gtk.PositionType.RIGHT, 1, 1)
         grid.attach_next_to(
-            self.list[2][0], self.list[1][0], Gtk.PositionType.BOTTOM, l, b)
+            self.list[2][0], self.list[1][0], Gtk.PositionType.BOTTOM, 1, 1)
         grid.attach_next_to(
-            self.list[2][1], self.list[2][0], Gtk.PositionType.RIGHT, l, b)
+            self.list[2][1], self.list[2][0], Gtk.PositionType.RIGHT, 1, 1)
         grid.attach_next_to(
-            self.list[2][2], self.list[2][1], Gtk.PositionType.RIGHT, l, b)
+            self.list[2][2], self.list[2][1], Gtk.PositionType.RIGHT, 1, 1)
 
         for li in self.list:
             for button in li:
@@ -138,7 +138,8 @@ class TicTacToe(activity.Activity):
         print("trigger")
         _ = int(uu[0])
         __ = int(uu[1])
-        widget.get_child().set_markup("<span font='70'>  "+self.turn+"  </span>")
+        widget.get_child().set_markup("<span font='70'>  "
++self.turn+"  </span>")
         if self.turn == "X":
             if _ == 0:
                 if __ == 0:
