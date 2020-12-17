@@ -139,7 +139,7 @@ Aditya </a></span>""")
         _ = int(uu[0])
         __ = int(uu[1])
         widget.get_child().set_markup("<span font='70'>  "
-+self.turn+"  </span>")
+                                      + self.turn+"  </span>")
         if self.turn == "X":
             if _ == 0:
                 if __ == 0:
@@ -230,7 +230,8 @@ Aditya </a></span>""")
                 button.get_child().set_markup("<span font='70'>     </span>")
         self.turn = ch.upper()
         self.turnview.set_markup(
-            "<span font='25'>"+self.turn+" wins!!! "+self.turn+"'s turn</span>")
+            "<span font='25'>"+self.turn+" wins!!! " +
+            self.turn+"'s turn</span>")
         self.storex = {"dl": 0, "dr": 0, "v1": 0,
                        "v2": 0, "v3": 0, "h1": 0, "h2": 0, "h3": 0}
         self.storeo = {"dl": 0, "dr": 0, "v1": 0,
