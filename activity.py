@@ -134,7 +134,6 @@ Aditya </a></span>""")
         if widget in self.track:
             return 0
         self.track.add(widget)
-        print("trigger")
         _ = int(uu[0])
         __ = int(uu[1])
         widget.get_child().set_markup("<span font='70'>  "
