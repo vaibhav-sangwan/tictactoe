@@ -138,8 +138,8 @@ Aditya </a></span>""")
         self.track.add(widget)
         _ = int(uu[0])
         __ = int(uu[1])
-        widget.get_child().set_markup("<span font='70'>  "
-                                      + self.turn+"  </span>")
+        widget.get_child().set_markup("<span font='70'> "
+                                      + self.turn+" </span>")
         if self.turn == "X":
             if _ == 0:
                 if __ == 0:
