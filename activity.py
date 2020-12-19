@@ -1,18 +1,18 @@
-#A simple tictactoe activity for SugarLabs
-#Copyright (C) 2020  Aditya Pratap Singh
+# A simple tictactoe activity for SugarLabs
+# Copyright (C) 2020  Aditya Pratap Singh
 #
-#This program is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from sugar3.activity.widgets import ActivityToolbarButton
 from sugar3.activity.widgets import StopButton
@@ -223,7 +223,7 @@ Aditya </a></span>""")
             self.declare_winner("O")
         if self.track.__len__() == 9:
             self.declare_winner()
-            return 0          
+            return 0
 
     def declare_winner(self, ch=None):
         if ch is None:
@@ -234,20 +234,19 @@ Aditya </a></span>""")
                 self.prevturn = "X"
                 self.turn = "X"
             self.turnview.set_markup(
-            "<span font='25'> It's a draw!!! " +
-            self.turn+"'s turn </span>")
+                "<span font='25'> It's a draw!!! " +
+                self.turn+"'s turn </span>")
         else:
             self.incscore(ch)
             self.turn = ch.upper()
             self.turnview.set_markup(
-            "<span font='25'>"+ch.upper+" wins!!! " +
-            self.turn+"'s turn</span>")
-        
-        
+                "<span font='25'>"+ch.upper+" wins!!! " +
+                self.turn+"'s turn</span>")
+
         for li in self.list:
             for button in li:
                 button.set_label("")
-                button.get_child().set_markup("<span font='70'>     </span>")  
+                button.get_child().set_markup("<span font='70'>     </span>")
         self.storex = {"dl": 0, "dr": 0, "v1": 0,
                        "v2": 0, "v3": 0, "h1": 0, "h2": 0, "h3": 0}
         self.storeo = {"dl": 0, "dr": 0, "v1": 0,
@@ -263,4 +262,3 @@ Aditya </a></span>""")
             self.o += 1
             self.scoreo.set_markup(
                 "<span font='12'> O:   "+str(self.o)+"</span>")
-
