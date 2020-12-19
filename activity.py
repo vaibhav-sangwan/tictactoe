@@ -240,7 +240,7 @@ Aditya </a></span>""")
             self.incscore(ch)
             self.turn = ch.upper()
             self.turnview.set_markup(
-                "<span font='25'>"+ch.upper+" wins!!! " +
+                "<span font='25'>"+ch.upper()+" wins!!! " +
                 self.turn+"'s turn</span>")
 
         for li in self.list:
