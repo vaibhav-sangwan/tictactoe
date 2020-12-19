@@ -26,6 +26,7 @@ gi.require_version('Gtk', '3.0')
 class TicTacToe(activity.Activity):
 
     def __init__(self, handle):
+        self.tcount = 0
         self.track = set()
         activity.Activity.__init__(self, handle)
 
@@ -56,6 +57,7 @@ class TicTacToe(activity.Activity):
         vbox.show()
 
         self.turn = "X"
+        self.prevturn = "X"
         self.turnview = Gtk.Label(label=self.turn+"'s turn")
         self.storex = {"dl": 0, "dr": 0, "v1": 0,
                        "v2": 0, "v3": 0, "h1": 0, "h2": 0, "h3": 0}
@@ -219,17 +221,33 @@ Aditya </a></span>""")
             self.declare_winner("X")
         if 3 in self.storeo.values():
             self.declare_winner("O")
+        if self.track.__len__() == 9:
+            self.declare_winner()
+            return 0          
 
-    def declare_winner(self, ch):
-        self.incscore(ch)
+    def declare_winner(self, ch=None):
+        if ch is None:
+            if self.prevturn == "X":
+                self.prevturn = "O"
+                self.turn = "O"
+            else:
+                self.prevturn = "X"
+                self.turn = "X"
+            self.turnview.set_markup(
+            "<span font='25'> It's a draw!!! " +
+            self.turn+"'s turn </span>")
+        else:
+            self.incscore(ch)
+            self.turn = ch.upper()
+            self.turnview.set_markup(
+            "<span font='25'>"+ch.upper+" wins!!! " +
+            self.turn+"'s turn</span>")
+        
+        
         for li in self.list:
             for button in li:
                 button.set_label("")
-                button.get_child().set_markup("<span font='70'>     </span>")
-        self.turn = ch.upper()
-        self.turnview.set_markup(
-            "<span font='25'>"+self.turn+" wins!!! " +
-            self.turn+"'s turn</span>")
+                button.get_child().set_markup("<span font='70'>     </span>")  
         self.storex = {"dl": 0, "dr": 0, "v1": 0,
                        "v2": 0, "v3": 0, "h1": 0, "h2": 0, "h3": 0}
         self.storeo = {"dl": 0, "dr": 0, "v1": 0,
@@ -245,3 +263,4 @@ Aditya </a></span>""")
             self.o += 1
             self.scoreo.set_markup(
                 "<span font='12'> O:   "+str(self.o)+"</span>")
+
