@@ -135,9 +135,6 @@ Aditya </a></span>""")
     def click(self, widget, *uu):
         if widget in self.track:
             return 0
-        if self.track.__len__() == 9:
-            self.declare_draw()
-            return 0
         self.track.add(widget)
         _ = int(uu[0])
         __ = int(uu[1])
@@ -224,6 +221,9 @@ Aditya </a></span>""")
             self.declare_winner("X")
         if 3 in self.storeo.values():
             self.declare_winner("O")
+        if self.track.__len__() == 9:
+            self.declare_winner()
+            return 0          
 
     def declare_winner(self, ch=None):
         if ch is None:
@@ -233,7 +233,9 @@ Aditya </a></span>""")
             else:
                 self.prevturn = "X"
                 self.turn = "X"
-            
+            self.turnview.set_markup(
+            "<span font='25'> It's a draw!!! " +
+            self.turn+"'s turn </span>")
         else:
             self.incscore(ch)
             self.turn = ch.upper()
@@ -261,4 +263,4 @@ Aditya </a></span>""")
             self.o += 1
             self.scoreo.set_markup(
                 "<span font='12'> O:   "+str(self.o)+"</span>")
-   def dec
+
