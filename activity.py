@@ -13,14 +13,16 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+from gi.repository import Gdk
 
 from sugar3.activity.widgets import ActivityToolbarButton
 from sugar3.activity.widgets import StopButton
 from sugar3.graphics.toolbarbox import ToolbarBox
 from sugar3.activity import activity
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+
 
 class TicTacToe(activity.Activity):
 
