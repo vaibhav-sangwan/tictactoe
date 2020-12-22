@@ -92,10 +92,8 @@ class TicTacToe(activity.Activity):
 
         vbox.pack_start(self.turnview, True, True, 0)
         grid = Gtk.Grid()
-        grid.halign = Gtk.Align.CENTER
-        vbox.halign = Gtk.Align.CENTER        
-        vbox.pack_start(grid, True, True, 0)
         grid.show()
+        vbox.pack_start(grid, True, True, 0)
 
         for _ in range(3):
             for __ in range(3):
@@ -103,7 +101,6 @@ class TicTacToe(activity.Activity):
                 self.list[_][__].connect("clicked", self.click, _, __)
 
         grid.attach(self.list[0][0], 0, 0, 1, 1)
-
 
         grid.attach_next_to(
             self.list[0][1], self.list[0][0], Gtk.PositionType.RIGHT, 1, 1)
