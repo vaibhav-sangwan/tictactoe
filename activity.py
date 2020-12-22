@@ -96,13 +96,6 @@ class TicTacToe(activity.Activity):
         grid = Gtk.Grid()
         grid.show()
         vbox.pack_start(grid, True, True, 0)
-        credits = Gtk.Label(label="")  # , xalign=1)
-        credits.set_markup(
-            """<span font='10'> Made with ❤ by <a href='https://www.github.com/devmrfitz'>
-Aditya </a></span>""")
-        credits.show()
-        vbox.pack_start(credits, 1, 1, 0)
-        credits.show()
 
         for _ in range(3):
             for __ in range(3):
