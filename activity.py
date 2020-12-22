@@ -66,16 +66,16 @@ class TicTacToe(activity.Activity):
         self.scoreo = Gtk.Label(label="")
         self.x = self.o = 0
         
-        f_size = int(style.FONT_SIZE)
+        self.f_size = int(style.FONT_SIZE)
 
-        self.scorex.set_markup("<span font='" + str(f_size * 1.2)+"'> X:   0 </span>")
-        self.scoreo.set_markup("<span font='" + str(f_size * 1.2)+"'> O:   0 </span>")
+        self.scorex.set_markup("<span font='" + str(self.f_size * 1.2)+"'> X:   0 </span>")
+        self.scoreo.set_markup("<span font='" + str(self.f_size * 1.2)+"'> O:   0 </span>")
         hbox = Gtk.Box(spacing=25)
         hbox.pack_start(self.scorex, True, True, 0)
         hbox.pack_start(Gtk.VSeparator(), 1, 1, 0)
         hbox.pack_start(self.scoreo, 1, 1, 0)
         label1 = Gtk.Label(label="")
-        label1.set_markup("<span font='" + str(f_size * 1.5)+"'> LEADERBOARD </span>")
+        label1.set_markup("<span font='" + str(self.f_size * 1.5)+"'> LEADERBOARD </span>")
         vbox.pack_start(label1, True, True, 0)
         vbox.pack_start(hbox, 1, 1, 0)
 
@@ -88,7 +88,7 @@ class TicTacToe(activity.Activity):
         sep = Gtk.HSeparator()
         sep.show()
         vbox.pack_start(sep, True, True, 0)
-        self.turnview.set_markup("<span font='" + str(f_size * 2.5)+"'>"+self.turn+"'s turn</span>")
+        self.turnview.set_markup("<span font='" + str(self.f_size * 2.5)+"'>"+self.turn+"'s turn</span>")
 
         vbox.pack_start(self.turnview, True, True, 0)
         grid = Gtk.Grid()
@@ -123,7 +123,7 @@ class TicTacToe(activity.Activity):
             for button in li:
                 button.set_label("")
                 button.show()
-                button.get_child().set_markup("<span font='" + str(f_size * 7)+"'>     </span>")
+                button.get_child().set_markup("<span font='" + str(self.f_size * 7)+"'>     </span>")
 
     def click(self, widget, *uu):
         if widget in self.track:
@@ -131,7 +131,7 @@ class TicTacToe(activity.Activity):
         self.track.add(widget)
         _ = int(uu[0])
         __ = int(uu[1])
-        widget.get_child().set_markup("<span font='" + str(f_size * 7)+"'> "
+        widget.get_child().set_markup("<span font='" + str(self.f_size * 7)+"'> "
                                       + self.turn+" </span>")
         if self.turn == "X":
             if _ == 0:
@@ -209,7 +209,7 @@ class TicTacToe(activity.Activity):
                     self.storeo["h3"] += 1
                     self.storeo["dl"] += 1
             self.turn = "X"
-        self.turnview.set_markup("<span font='" + str(f_size * 2.5)+"'>"+self.turn+"'s turn</span>")
+        self.turnview.set_markup("<span font='" + str(self.f_size * 2.5)+"'>"+self.turn+"'s turn</span>")
         if 3 in self.storex.values():
             self.declare_winner("X")
         if 3 in self.storeo.values():
@@ -227,19 +227,19 @@ class TicTacToe(activity.Activity):
                 self.prevturn = "X"
                 self.turn = "X"
             self.turnview.set_markup(
-                "<span font='" + str(f_size * 2.5)+"'> It's a draw!!! " +
+                "<span font='" + str(self.f_size * 2.5)+"'> It's a draw!!! " +
                 self.turn+"'s turn </span>")
         else:
             self.incscore(ch)
             self.turn = ch.upper()
             self.turnview.set_markup(
-                "<span font='" + str(f_size * 2.5)+"'>"+ch.upper()+" wins!!! " +
+                "<span font='" + str(self.f_size * 2.5)+"'>"+ch.upper()+" wins!!! " +
                 self.turn+"'s turn</span>")
 
         for li in self.list:
             for button in li:
                 button.set_label("")
-                button.get_child().set_markup("<span font='" + str(f_size * 7)+"'>     </span>")
+                button.get_child().set_markup("<span font='" + str(self.f_size * 7)+"'>     </span>")
         self.storex = {"dl": 0, "dr": 0, "v1": 0,
                        "v2": 0, "v3": 0, "h1": 0, "h2": 0, "h3": 0}
         self.storeo = {"dl": 0, "dr": 0, "v1": 0,
@@ -250,8 +250,8 @@ class TicTacToe(activity.Activity):
         if ch.upper() == "X":
             self.x += 1
             self.scorex.set_markup(
-                "<span font='" + str(f_size * 1.2)+"'> X:   "+str(self.x)+"</span>")
+                "<span font='" + str(self.f_size * 1.2)+"'> X:   "+str(self.x)+"</span>")
         elif ch.upper() == "O":
             self.o += 1
             self.scoreo.set_markup(
-                "<span font='" + str(f_size * 1.2)+"'> O:   "+str(self.o)+"</span>")
+                "<span font='" + str(self.f_size * 1.2)+"'> O:   "+str(self.o)+"</span>")
