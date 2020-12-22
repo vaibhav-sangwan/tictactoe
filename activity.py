@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from sugar3.activity import activity
+from sugar3.graphics import style
 from sugar3.activity.widgets import ActivityToolbarButton
 from sugar3.activity.widgets import StopButton
 from sugar3.graphics.toolbarbox import ToolbarBox
@@ -64,6 +65,8 @@ class TicTacToe(activity.Activity):
         self.scorex = Gtk.Label(label="")
         self.scoreo = Gtk.Label(label="")
         self.x = self.o = 0
+        
+        print(int(style.FONT_SIZE))
 
         self.scorex.set_markup("<span font='12'> X:   0 </span>")
         self.scoreo.set_markup("<span font='12'> O:   0 </span>")
