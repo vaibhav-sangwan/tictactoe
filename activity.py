@@ -101,7 +101,8 @@ class TicTacToe(activity.Activity):
                 self.list[_][__].connect("clicked", self.click, _, __)
 
         grid.attach(self.list[0][0], 0, 0, 1, 1)
-        grid.halign = GTK_ALIGN_CENTER
+        grid.halign = Gtk.Align.CENTER
+        vbox.halign = Gtk.Align.CENTER
 
         grid.attach_next_to(
             self.list[0][1], self.list[0][0], Gtk.PositionType.RIGHT, 1, 1)
