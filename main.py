@@ -24,6 +24,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
+from gettext import gettext as _
 
 # The main controller
 class Main:
@@ -37,7 +38,7 @@ class Main:
 
     def set_canvas(self, canvas):
         self.canvas = canvas
-        pg.display.set_caption("Tic-Tac-Toe")
+        pg.display.set_caption(_("Tic-Tac-Toe"))
 
     def write_file(self, file_path):
         pass
@@ -188,7 +189,7 @@ class Main:
 
     def set_turn(self):
         self.turn_text = pg.font.Font(None, 64).render(
-            ["O Turn", "", "X Turn"][self.frame.turn + 1], True, g.WHITE
+            ["O " + _("Turn"), "", "X " + _("Turn")][self.frame.turn + 1], True, g.WHITE
         )
 
     # The main loop
@@ -200,11 +201,11 @@ class Main:
         g.init()
         pg.font.init()
         self.heading = pg.font.Font(None, 96).render(
-            "Tic - Tac - Toe",
+            _("Tic - Tac - Toe"),
             True,
             g.WHITE
         )
-        self.reset_text = pg.font.Font(None, 56).render("Reset", True, g.WHITE)
+        self.reset_text = pg.font.Font(None, 56).render(_("Reset"), True, g.WHITE)
         self.question_text = pg.font.Font(None, 72).render("?", True, g.WHITE)
         self.close_text = pg.font.Font(None, 64).render("X", True, g.WHITE)
         self.help_text = [
@@ -214,10 +215,10 @@ class Main:
                 g.WHITE,
             )
             for i in (
-                "Each player takes it in turn to place their X or O",
-                "into one of the empty squares in the grid by clicking on it.",
-                "To win the game get three of your symbols in a line",
-                "horizontally, vertically or diagonally",
+                _("Each player takes it in turn to place their X or O"),
+                _("into one of the empty squares in the grid by clicking on it."),
+                _("To win the game get three of your symbols in a line"),
+                _("horizontally, vertically or diagonally"),
             )
         ]
         self.help_pos = pg.Rect(
