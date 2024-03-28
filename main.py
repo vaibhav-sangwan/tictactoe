@@ -74,14 +74,14 @@ class Main:
             40,
         )
         if self.show_help:
+            width = self.close_text.get_width()
+            height = self.close_text.get_height()
+            close_rect = (
+                (3 * g.WIDTH + g.FRAME_GAP * 3 - 2 * width) // 4,
+                (g.HEIGHT * 0.5 - g.FRAME_GAP * 1.5 - height) // 2
+            )
             g.WIN.blit(
-                self.close_text,
-                (
-                    (3 * g.WIDTH + g.FRAME_GAP * 3 - 2 * self.close_text.get_width())
-                    // 4,
-                    (g.HEIGHT * 0.5 - g.FRAME_GAP * 1.5 - self.close_text.get_height())
-                    // 2,
-                ),
+                self.close_text, close_rect
             )
             pg.draw.rect(
                 g.WIN,
@@ -109,35 +109,35 @@ class Main:
                     ),
                 )
         else:
+            width = self.question_text.get_width()
+            height = self.question_text.get_height()
+            question_rect = (
+                (3 * g.WIDTH + g.FRAME_GAP * 3 - 2 * width) // 4,
+                (g.HEIGHT * 0.5 - g.FRAME_GAP * 1.5 - height) // 2
+            )
             g.WIN.blit(
-                self.question_text,
-                (
-                    (3 * g.WIDTH + g.FRAME_GAP * 3 - 2 * self.question_text.get_width())
-                    // 4,
-                    (
-                        g.HEIGHT * 0.5
-                        - g.FRAME_GAP * 1.5
-                        - self.question_text.get_height()
-                    )
-                    // 2,
-                ),
+                self.question_text, question_rect
             )
 
     def draw(self):
         g.WIN.fill(g.BLACK)
-        g.WIN.blit(
-            self.heading,
-            (
-                (g.WIDTH - self.heading.get_width()) // 2,
-                (g.HEIGHT * 0.5 - g.FRAME_GAP * 1.5 - self.heading.get_height()) // 2,
-            ),
+        heading_w = self.heading.get_width()
+        heading_h = self.heading.get_height()
+        heading_rect = (
+            (g.WIDTH - heading_w) // 2,
+            (g.HEIGHT * 0.5 - g.FRAME_GAP * 1.5 - heading_h) // 2,
         )
         g.WIN.blit(
-            self.turn_text,
-            (
-                (g.WIDTH - g.FRAME_GAP * 3 - 2 * self.turn_text.get_width()) / 4,
-                (g.HEIGHT * 0.5 - g.FRAME_GAP * 1.5 - self.turn_text.get_height()) // 2,
-            ),
+            self.heading, heading_rect
+        )
+        tt_width = self.turn_text.get_width()
+        tt_height = self.turn_text.get_height()
+        tt_rect = (
+            (g.WIDTH - g.FRAME_GAP * 3 - 2 * tt_width) / 4,
+            (g.HEIGHT * 0.5 - g.FRAME_GAP * 1.5 - tt_height) // 2
+        )
+        g.WIN.blit(
+            self.turn_text, tt_rect
         )
         self.frame.draw()
         self.cross_ui.update()
@@ -151,10 +151,11 @@ class Main:
                 (g.HEIGHT / 2 + g.FRAME_GAP / 4),
             ),
         )
+        sc_width = scorex.get_width()
         g.WIN.blit(
             scoreo,
             (
-                g.WIDTH - (g.WIDTH - g.FRAME_GAP * 3 + 2 * scorex.get_width()) / 4,
+                g.WIDTH - (g.WIDTH - g.FRAME_GAP * 3 + 2 * sc_width) / 4,
                 (g.HEIGHT / 2 + g.FRAME_GAP / 4),
             ),
         )
@@ -187,7 +188,9 @@ class Main:
 
     def set_turn(self):
         self.turn_text = pg.font.Font(None, 64).render(
-        ["O Turn", "", "X Turn"][self.frame.turn + 1], True, g.WHITE)
+            ["O Turn", "", "X Turn"][self.frame.turn + 1], True, g.WHITE
+        )
+
     # The main loop
     def run(self):
         for event in pg.event.get():
@@ -196,7 +199,11 @@ class Main:
                 break
         g.init()
         pg.font.init()
-        self.heading = pg.font.Font(None, 96).render("Tic - Tac - Toe", True, g.WHITE)
+        self.heading = pg.font.Font(None, 96).render(
+            "Tic - Tac - Toe",
+            True,
+            g.WHITE
+        )
         self.reset_text = pg.font.Font(None, 56).render("Reset", True, g.WHITE)
         self.question_text = pg.font.Font(None, 72).render("?", True, g.WHITE)
         self.close_text = pg.font.Font(None, 64).render("X", True, g.WHITE)
@@ -227,10 +234,16 @@ class Main:
         )
         self.font = pg.font.Font(None, 72)
         self.cross_ui = Animate(self, color=g.ORANGE).cross(
-            ((g.WIDTH - g.FRAME_GAP * 3) / 4, g.HEIGHT / 2 - g.FRAME_GAP / 4), 43, 11
+            (
+                (g.WIDTH - g.FRAME_GAP * 3) / 4,
+                g.HEIGHT / 2 - g.FRAME_GAP / 4
+            ), 43, 11
         )
         self.circle_ui = Animate(self, color=g.RED).circle(
-            (g.WIDTH - (g.WIDTH - g.FRAME_GAP * 3) / 4, g.HEIGHT / 2 - g.FRAME_GAP / 4),
+            (
+                g.WIDTH - (g.WIDTH - g.FRAME_GAP * 3) / 4,
+                g.HEIGHT / 2 - g.FRAME_GAP / 4
+            ),
             40,
             8,
         )
