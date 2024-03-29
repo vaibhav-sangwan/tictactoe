@@ -129,13 +129,11 @@ class Frame:
                 self.reset()
 
         # fmt: off
-        _sum = self.board[index[0]][0] + \
-            self.board[index[0]][1] + \
-            self.board[index[0]][2]
+        i0 = index[0]
+        i1 = index[1]
+        _sum = self.board[i0][0] + self.board[i0][1] + self.board[i0][2]
         check(_sum, index[0], None)
-        _sum = self.board[0][index[1]] + \
-            self.board[1][index[1]] + \
-            self.board[2][index[1]]
+        _sum = self.board[0][i1] + self.board[1][i1] + self.board[2][i1]
         check(_sum, None, index[1])
         _sum = self.board[0][0] + self.board[1][1] + self.board[2][2]
         check(_sum, None, None)
